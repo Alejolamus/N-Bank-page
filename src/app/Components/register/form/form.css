@@ -1,0 +1,19 @@
+@import "tailwindcss";
+p {
+    @apply mt-3 text-gray-600;
+}
+button {
+    @apply rounded-lg bg-blue-600 px-5 py-2 text-white hover:bg-blue-700 transition;
+}
+form {
+    @apply flex flex-col gap-4 items-center text-center;
+}
+.container {
+    @apply min-h-screen min-w-screen bg-gray-50 border-t border-gray-200 flex items-center justify-center;
+}
+.target {
+    @apply bg-blue-200 rounded-xl shadow-lg p-12  w-full max-w-md;
+}
+input {
+    @apply bg-white rounded-lg border border-black;
+}

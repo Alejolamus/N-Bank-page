@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="target">
+        <form >
+            <p>Nombre</p>
+            <input id="userName" placeholder="Enrique Bunbury" type="text"/>
+            <p>Correo</p>
+            <input id="email" placeholder="example@NBank.com" type="email"/>
+            <p>Telefono</p>
+            <input id="phone" placeholder="+576012004040" type="tel"/>
+            <p>Celular</p>
+            <input id="celphone" placeholder="+573002004040" type="tel"/>
+            <label for="tipodocumento">Tipo de documento</label>
+            <select id="tipodocumento" name="tipodocumento">
+                <option value="C.C">Cedula de ciudadania</option>
+                <option value="C.E">Cedula de extranjeria</option>
+                <option value="P.P">Pasaporte</option>
+            </select>
+            <label for="Departamento">Departamento</label>
+            <select
+                [(ngModel)]="departamentoSeleccionado"
+                (change)="municipiosService(departamentoSeleccionado)"
+                name="Departamento">
+                <option value="" disabled selected>Seleccione un departamento</option>
+                <option *ngFor="let departamento of departamentos" [ngValue]="departamento">
+                    {{departamento}}
+                </option>
+            </select>
+            <label id="Municipio">Municipio</label>
+            <select id="Municipio" name="Municipio">
+                <option *ngFor="let municipio of municipios" [value]="municipio">
+                    {{municipio}}
+                </option>
+            </select>
+            <p>Numero de documento</p>
+            <input id="numDoc" placeholder="1234567896" type="number">
+            <p>Contraseña</p>
+            <input id="password" placeholder="password" type="password"/>
+            <p>Confirmar Contraseña</p>
+            <input id=" confpassword" placeholder="confirmar password" type="password"/>
+            <label>Terminos y condiciones</label>
+            <input id="Terminos" type="checkbox"/>
+            <button>Registro</button>
+        </form>        
+    </div>
+</div>
