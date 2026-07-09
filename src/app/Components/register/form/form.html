@@ -1,16 +1,36 @@
 <div class="container">
     <div class="target">
-        <form >
+        <form (ngSummit)="CrearNuevoCliente()">
             <p>Nombre</p>
-            <input id="userName" placeholder="Enrique Bunbury" type="text"/>
+            <input id="userName" placeholder="Enrique Bunbury" type="text"
+            name="NombreUsuario"
+            [(ngModel)]="NombreUsuario"/>
             <p>Correo</p>
-            <input id="email" placeholder="example@NBank.com" type="email"/>
+            <input id="email" placeholder="example@NBank.com" type="email"
+            [(ngModel)]="CorreoUsuario"
+            name="correo"/>
             <p>Telefono</p>
-            <input id="phone" placeholder="+576012004040" type="tel"/>
+            <input id="phone" 
+            name="telefono"
+            placeholder="+576012004040" 
+            type="text"
+            [(ngModel)]="numerotelegono"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="10"/>
             <p>Celular</p>
-            <input id="celphone" placeholder="+573002004040" type="tel"/>
+            <input 
+            id="cellphone" 
+            name="celular"
+            placeholder="+573002004040" 
+            type="text"
+            [(ngModel)]="numeroCelular"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="10"/>
             <label for="tipodocumento">Tipo de documento</label>
-            <select id="tipodocumento" name="tipodocumento">
+            <select id="tipodocumento" name="tipodocumento"
+            [(ngModel)]="TipoDoc">
                 <option value="C.C">Cedula de ciudadania</option>
                 <option value="C.E">Cedula de extranjeria</option>
                 <option value="P.P">Pasaporte</option>
@@ -26,20 +46,32 @@
                 </option>
             </select>
             <label id="Municipio">Municipio</label>
-            <select id="Municipio" name="Municipio">
-                <option *ngFor="let municipio of municipios" [value]="municipio">
-                    {{municipio}}
+            <select id="Municipio" [(ngModel)]="municipioSeleccionado" name="Municipio">
+                <option *ngFor="let municipio of municipios" [value]="municipio.idMunicipio">
+                    {{municipio.municipioName}}
                 </option>
             </select>
             <p>Numero de documento</p>
-            <input id="numDoc" placeholder="1234567896" type="number">
+            <input
+            id="numDoc"
+            name="numDoc"
+            type="text"
+            [(ngModel)]="numeroDocumento"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            maxlength="10">
             <p>Contraseña</p>
-            <input id="password" placeholder="password" type="password"/>
+            <input id="password" placeholder="password" type="password"
+            name="contraseña"
+            [(ngModel)]="ContraseñaUsuario"/>
             <p>Confirmar Contraseña</p>
-            <input id=" confpassword" placeholder="confirmar password" type="password"/>
+            <input id=" confpassword" placeholder="confirmar password" type="password"
+            name="ConfirmacionContraseña"
+            [(ngModel)]="ConfirmacionContraseña"/>
             <label>Terminos y condiciones</label>
-            <input id="Terminos" type="checkbox"/>
-            <button>Registro</button>
+            <input id="Terminos" type="checkbox" [(ngModel)]="terminosYcondiciones"
+            name="terminos"/>
+            <button type="submit">Registro</button>
         </form>        
     </div>
 </div>
