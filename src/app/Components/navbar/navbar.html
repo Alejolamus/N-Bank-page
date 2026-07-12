@@ -24,11 +24,17 @@
         </a>
       </li>
     </ul>
-
-    <button routerLink="/login"
-      class="rounded-lg bg-blue-600 px-5 py-2 text-white hover:bg-blue-700 transition">
-      Iniciar sesión
-    </button>
-
+    @if (estaLogueado){
+      <p>{{nombreUsuario}}</p>
+      <button class="rounded-lg bg-blue-600 px-5 py-2 text-white hover:bg-blue-700 transition"
+      (click)="cerrarSesion()">
+        Cerrar sesion
+      </button>
+    }@else{
+      <button routerLink="/login"
+        class="rounded-lg bg-blue-600 px-5 py-2 text-white hover:bg-blue-700 transition">
+        Iniciar sesión
+      </button>  
+    }
   </div>
 </nav>

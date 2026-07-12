@@ -1,6 +1,6 @@
 <div class="container">
     <div class="target">
-        <form (ngSummit)="CrearNuevoCliente()">
+        <form (ngSubmit)="CrearNuevoCliente()">
             <p>Nombre</p>
             <input id="userName" placeholder="Enrique Bunbury" type="text"
             name="NombreUsuario"
@@ -63,11 +63,11 @@
             <p>Contraseña</p>
             <input id="password" placeholder="password" type="password"
             name="contraseña"
-            [(ngModel)]="ContraseñaUsuario"/>
+            [(ngModel)]="passUsuario"/>
             <p>Confirmar Contraseña</p>
             <input id=" confpassword" placeholder="confirmar password" type="password"
             name="ConfirmacionContraseña"
-            [(ngModel)]="ConfirmacionContraseña"/>
+            [(ngModel)]="ConfirmacionPass"/>
             <label>Terminos y condiciones</label>
             <input id="Terminos" type="checkbox" [(ngModel)]="terminosYcondiciones"
             name="terminos"/>

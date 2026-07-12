@@ -1,12 +1,14 @@
 <div class="container">
     <div class="target">
-        <form>
+        <form (ngSubmit)="login()">
             <img src="graphic_resources/User_icon.png" class="w-12 h-12"/>
             <p>Correo</p>
-            <input id="correo" placeholder="example@NBank.com" type="email"/>
+            <input id="correo" placeholder="example@NBank.com" type="email" name="correo"
+            [(ngModel)]="correoUsuario"/>
             <p>Contraseña</p>
-            <input id="password" placeholder="Contraseña" type="password"/>
-            <button>Login</button>
+            <input id="password" placeholder="Contraseña" type="password" name="contraseña"
+            [(ngModel)]="passUsuario"/>
+            <button type="submit">Login</button>
             <a href="#">Olvidaste tu Contraseña</a>
             <a href="/register">Regístrarse</a>
         </form>    

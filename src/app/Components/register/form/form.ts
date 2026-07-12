@@ -29,8 +29,8 @@ export class FormRegistro {
   TipoDoc: string='';
   municipioSeleccionado: number=0;
   numeroDocumento: string='';
-  ContraseñaUsuario: string='';
-  ConfirmacionContraseña: string='';
+  passUsuario: string='';
+  ConfirmacionPass: string='';
   terminosYcondiciones: boolean=false;
   ngOnInit(): void {
     console.log("Entré al ngOnInit");
@@ -60,20 +60,10 @@ export class FormRegistro {
     console.log(this.municipios);
   }
   
-  CrearNuevoCliente(nameClient: string,
-                    correoClient: string,
-                    telefonoClient: string,
-                    celularCleint: string,
-                    tipoDocClient: string,
-                    numeroDocClient: string,
-                    municipioClient: number,
-                    contraseñaClient: string,
-                    contraseñaConfClient: string,
-                    terminos:boolean
-                    ){
+  CrearNuevoCliente(){
   
   let tipoDocumentoEnum: number = 0;
-  switch (tipoDocClient) {
+  switch (this.TipoDoc) {
   case "C.C":
     tipoDocumentoEnum = 0;
     break;
@@ -89,16 +79,16 @@ export class FormRegistro {
   default:
     throw new Error("Tipo de documento no válido");
                     }
-  if (contraseñaClient===contraseñaConfClient && terminos===true){
+  if (this.passUsuario===this.ConfirmacionPass && this.terminosYcondiciones===true){
     const nuevocliente: NewClient={
-    name: nameClient,
-    idLocation: municipioClient,
+    name: this.NombreUsuario,
+    idLocation: this.municipioSeleccionado,
     documentType: tipoDocumentoEnum,
-    document: numeroDocClient,
-    password: contraseñaClient,
-    email: correoClient,
-    cellphone: celularCleint,
-    phone: telefonoClient 
+    document: Number(this.numeroDocumento),
+    password: this.passUsuario,
+    email: this.CorreoUsuario,
+    cellphone: this.numerotelegono,
+    phone: this.numeroCelular 
   }
   this.regirtrarService.crearCliente(nuevocliente)
   .subscribe({
