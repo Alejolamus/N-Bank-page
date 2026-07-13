@@ -15,7 +15,8 @@ import { RegistroServices } from '../../../services/registro.services';
 })
 export class FormRegistro {
   constructor(private ubicacionesService: UbicacionesColService,
-              private regirtrarService: RegistroServices
+              private regirtrarService: RegistroServices,
+              private cdr: ChangeDetectorRef
   ) { }
   ubicaciones: UbicacionCol[] = [];
   departamentos: string[] = [];
@@ -32,8 +33,9 @@ export class FormRegistro {
   passUsuario: string='';
   ConfirmacionPass: string='';
   terminosYcondiciones: boolean=false;
+  //msn//
+  mensajeStatus: string='';
   ngOnInit(): void {
-    console.log("Entré al ngOnInit");
     this.ubicacionesService.obtenerUbicaciones()
       .subscribe({
 
@@ -93,12 +95,14 @@ export class FormRegistro {
   this.regirtrarService.crearCliente(nuevocliente)
   .subscribe({
     next: (respuesta) => {
-      console.log("Cliente registrado", respuesta);
+      this.mensajeStatus=respuesta;
     },
     error: (error) => {
       console.error(error);
+      this.mensajeStatus=error;
     }
   });
   }
+  this.cdr.detectChanges();
 }
 }

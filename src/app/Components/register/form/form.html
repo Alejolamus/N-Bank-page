@@ -1,6 +1,9 @@
 <div class="container">
     <div class="target">
         <form (ngSubmit)="CrearNuevoCliente()">
+            @if (mensajeStatus){
+                <p class="Error">{{mensajeStatus}}</p>
+            }
             <p>Nombre</p>
             <input id="userName" placeholder="Enrique Bunbury" type="text"
             name="NombreUsuario"

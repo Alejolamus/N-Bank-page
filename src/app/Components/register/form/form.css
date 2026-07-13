@@ -17,3 +17,6 @@ form {
 input {
     @apply bg-white rounded-lg border border-black;
 }
+.Error{
+    @apply mt-3 text-red-600;
+}

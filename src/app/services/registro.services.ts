@@ -9,7 +9,9 @@ export class RegistroServices {
   private apiUrl = 'https://localhost:44343/api/CrearClient';
 
   constructor(private http: HttpClient) { }
-  crearCliente(cliente: NewClient): Observable<any> {
-      return this.http.post(this.apiUrl, cliente);
-    }
+  crearCliente(cliente: NewClient): Observable<string> {
+      return this.http.post(this.apiUrl, cliente,{
+      responseType: 'text'
+    });
+  }
 }

@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms'
 import { DataLogin } from '../../../models/dataLogin';
 import { LoginServices } from '../../../services/login/login.services';
 import { DecodigicarTokenService } from '../../../services/JwtDecodificar/decodigicar-token.service';
-
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-form-login',
   standalone: true,
@@ -16,7 +16,8 @@ import { DecodigicarTokenService } from '../../../services/JwtDecodificar/decodi
 export class FormLogin {
   constructor(private LoginServicios: LoginServices,
               private decodificarToken: DecodigicarTokenService,
-              private router: Router
+              private router: Router,
+              private cdr: ChangeDetectorRef
   ){}
   correoUsuario: string='';
   passUsuario: string='';
@@ -33,13 +34,14 @@ export class FormLogin {
   this.LoginServicios.loginAndToken(datosIngreso)
     .subscribe({
       next: (respuesta) => {
-        console.log('ingreso a next')
+        console.log('ingreso a next');
         console.log("resultado Login", respuesta);
         localStorage.setItem("token", respuesta);
         this.decodificarToken.decodificarToken();
         this.router.navigate(['/']);
       },
       error: (error) => {
+        console.log('intrese al error');
         switch (error.status) {
           case 401:
             this.mensajeError = "Contraseña incorrecta";
@@ -52,6 +54,8 @@ export class FormLogin {
           default:
             this.mensajeError = "Error inesperado. Intente de nuevo.";
         }
+        this.cdr.detectChanges();
+        console.log(this.mensajeError);
       }
     });
   }
