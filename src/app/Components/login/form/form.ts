@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 import {FormsModule} from '@angular/forms'
 import { DataLogin } from '../../../models/dataLogin';
 import { LoginServices } from '../../../services/login/login.services';
@@ -8,43 +9,50 @@ import { DecodigicarTokenService } from '../../../services/JwtDecodificar/decodi
 @Component({
   selector: 'app-form-login',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, CommonModule],
   templateUrl: './form.html',
   styleUrl: './form.css',
 })
 export class FormLogin {
   constructor(private LoginServicios: LoginServices,
-              private decodificarToken: DecodigicarTokenService
+              private decodificarToken: DecodigicarTokenService,
+              private router: Router
   ){}
   correoUsuario: string='';
   passUsuario: string='';
-  
-  login(){
-  const datosIngreso: DataLogin={
+  mensajeError: string='';
+  login() {
+
+  this.mensajeError = "";
+
+  const datosIngreso: DataLogin = {
     email: this.correoUsuario,
-    contraseña: this.passUsuario
-  }
+    password: this.passUsuario
+  };
+
   this.LoginServicios.loginAndToken(datosIngreso)
-  .subscribe({
-    next: (respuesta) => {
-      console.log("resultado Login", respuesta);
-      localStorage.setItem("token", respuesta);
-      this.decodificarToken.decodificarToken();
-    },
-    error: (error) => {
-      switch (error.status){
-        case 401:
-            console.log("Contraseña incorrecta");
+    .subscribe({
+      next: (respuesta) => {
+        console.log('ingreso a next')
+        console.log("resultado Login", respuesta);
+        localStorage.setItem("token", respuesta);
+        this.decodificarToken.decodificarToken();
+        this.router.navigate(['/']);
+      },
+      error: (error) => {
+        switch (error.status) {
+          case 401:
+            this.mensajeError = "Contraseña incorrecta";
             break;
 
           case 404:
-            console.log("Usuario no existe");
+            this.mensajeError = "Usuario no existe";
             break;
 
           default:
-            console.log("Error inesperado");
+            this.mensajeError = "Error inesperado. Intente de nuevo.";
+        }
       }
-    }
-  });
+    });
   }
 }

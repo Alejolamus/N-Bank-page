@@ -1,4 +1,4 @@
 export interface DataLogin{
     email: string,
-    contraseña: string
+    password: string
 }

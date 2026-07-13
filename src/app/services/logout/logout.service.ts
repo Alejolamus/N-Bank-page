@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class LogoutService {
   logout(){
-    localStorage.clear
+    localStorage.clear();
   }
 }

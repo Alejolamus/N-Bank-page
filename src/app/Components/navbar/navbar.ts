@@ -18,7 +18,7 @@ export class Navbar {
   }
 
   get nombreUsuario(): string {
-    return localStorage.getItem("nombre") ?? "";
+    return localStorage.getItem("user_name") ?? "";
   }
 
   cerrarSesion(){

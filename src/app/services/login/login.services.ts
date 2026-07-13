@@ -12,7 +12,9 @@ export class LoginServices {
 
   constructor(private http: HttpClient) { }
 
-  loginAndToken(data: DataLogin): Observable<any> {
-    return this.http.post(this.apiUrl, data);
-  }
+  loginAndToken(data: DataLogin): Observable<string> {
+  return this.http.post(this.apiUrl, data, {
+    responseType: 'text'
+  });
+}
 }
