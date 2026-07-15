@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { Router} from '@angular/router';
 import {FormsModule} from '@angular/forms'
 import { DataLogin } from '../../../models/dataLogin';
 import { LoginServices } from '../../../services/login/login.services';
@@ -9,7 +9,7 @@ import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-form-login',
   standalone: true,
-  imports: [RouterLink, FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './form.html',
   styleUrl: './form.css',
 })

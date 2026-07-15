@@ -20,3 +20,9 @@ input {
 .Error{
     @apply mt-3 text-red-600;
 }
+select {
+    @apply text-center;
+}
+option {
+    @apply text-center;
+}

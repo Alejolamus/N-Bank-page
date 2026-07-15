@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { UbicacionesColService } from '../../../services/ubicaciones.col.service';
 import { UbicacionCol } from '../../../models/ubicaciones-col';
 import { CommonModule } from '@angular/common';

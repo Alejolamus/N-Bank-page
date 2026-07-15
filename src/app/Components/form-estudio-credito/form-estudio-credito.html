@@ -1,1 +1,57 @@
-<p>form-estudio-credito works!</p>
+<div class="container">
+    <div class="target">
+        <form>
+            <p>Datos economicos</p>
+            <label for="DivisasDb">Moneda de uso</label>
+            <select [(ngModel)]="divisaSeleccionada"
+            name="DivisasDb">
+                <option value="" disabled selected>Seleccione una valor pais-moneda</option>
+                <option *ngFor="let divisa of divisas" [ngValue]="divisa.idMoneda">
+                    {{divisa.pais}}-{{divisa.nombre}}
+                </option>
+            </select>
+            <p>Ingresos minimos mensuales</p>
+            <input [(ngModel)]="ingresosMinimos" placeholder="valor sin puntos"
+            type="number"
+            step="0.01"
+            min="0"
+            maxlength="10"
+            name="minIngresos"/>
+            <p>Ingresos maximos mensuales</p>
+            <input [(ngModel)]="ingresosMaximos" placeholder="valor sin puntos" 
+            type="number"
+            step="0.01"
+            min="0"
+            maxlength="10"
+            name="maxIngresos"/>
+            <p>Gastos mensuales</p>
+            <input [(ngModel)]="gastosCliente" placeholder="valor sin puntos" 
+            type="number"
+            step="0.01"
+            min="0"
+            maxlength="10"
+            name="gastoMensual"/>
+            <p>Datos del credito</p>
+            <p>Valor solicitado</p>
+            <input [(ngModel)]="valorCredito" placeholder="valor sin puntos" 
+            type="number"
+            step="0.01"
+            min="0"
+            maxlength="10"
+            name="creditoSolicitado"/>
+            <label for="frecuencia">Frecuencia de cobro</label>
+            <select [(ngModel)]="frecuenciaDeCobro" id="frecuencia" name="frecuencia">
+                <option [ngValue]="0">semanal</option>
+                <option [ngValue]="1">quincenal</option>
+                <option [ngValue]="2">mensual</option>
+            </select>
+            <p>Numero de coutas</p>
+            <input [(ngModel)]="numeroDeCuotas" placeholder="valores positivos enteros" 
+            type="number"
+            min="0"
+            max="303"
+            name="cantidadCuotas"/>     
+            <button type="button" (click)="CotizarCreditoYauht()">Cotizar</button>       
+        </form>
+    </div>
+</div>

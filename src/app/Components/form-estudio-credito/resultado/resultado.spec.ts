@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ContizarForm } from './contizar-form';
+import { Resultado } from './resultado';
 
-describe('ContizarForm', () => {
-  let component: ContizarForm;
-  let fixture: ComponentFixture<ContizarForm>;
+describe('Resultado', () => {
+  let component: Resultado;
+  let fixture: ComponentFixture<Resultado>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ContizarForm],
+      imports: [Resultado],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ContizarForm);
+    fixture = TestBed.createComponent(Resultado);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

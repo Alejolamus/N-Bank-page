@@ -11,8 +11,9 @@ export class DecodigicarTokenService {
     if (token!=null){
       const claims=jwtDecode<JwtClaims>(token);
       localStorage.setItem("user_name", claims.name);
-      localStorage.setItem("id_user",claims.id);
-      localStorage.setItem("rol_user",claims.rol);
+      localStorage.setItem("id",claims.id);
+      localStorage.setItem("rol_user",
+                            claims["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]);
     }
   }
 }
