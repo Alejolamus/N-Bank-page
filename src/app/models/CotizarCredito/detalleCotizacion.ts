@@ -5,4 +5,7 @@ export interface detalleCotizacion{
     valorCredito: number;
     cantidadCuotas: number;
     frecuenciaCobro: string;
+    simbolo: string;
+    idMoney: number;
+    idUser: number;
 }

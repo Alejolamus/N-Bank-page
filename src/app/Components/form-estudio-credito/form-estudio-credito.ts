@@ -28,7 +28,7 @@ export class FormEstudioCredito {
   ){}
   divisas: currencyDataForm[]=[]
   //valores formulario//
-  divisaSeleccionada: number=0;
+  divisaSeleccionada: currencyDataForm | null =null;
   ingresosMinimos: number=0;
   ingresosMaximos: number=0;
   gastosCliente: number=0;
@@ -53,8 +53,9 @@ export class FormEstudioCredito {
   frecuenciaString: string='';
   CotizarCreditoYauht(){
     this.cdr.detectChanges();
-    const dataPelfilUser: DtosProfiles={
-      idClient: Number(localStorage.getItem('id_user')),
+    if (this.divisaSeleccionada){
+      const dataPelfilUser: DtosProfiles={
+      idClient: Number(localStorage.getItem('id')),
       minGanadoMensual:this.ingresosMinimos,
       maxGanadoMensual:this.ingresosMaximos,
       gastos:this.gastosCliente
@@ -64,7 +65,7 @@ export class FormEstudioCredito {
       frecuenciaCobro:this.frecuenciaDeCobro,
       fechaInicio: new Date(),
       numCuotas: this.numeroDeCuotas,
-      idCurrency: this.divisaSeleccionada
+      idCurrency: this.divisaSeleccionada.idMoneda
     };
     const dataSolicitud: CotizarData={
       perfil: dataPelfilUser,
@@ -72,7 +73,7 @@ export class FormEstudioCredito {
     };
     switch(this.frecuenciaDeCobro){
       case 0:
-        this.frecuenciaString="Semnal";
+        this.frecuenciaString="Semanal";
         break;
       case 1:
         this.frecuenciaString="Quincenal";
@@ -86,21 +87,27 @@ export class FormEstudioCredito {
       {
         next: (Datas)=> {
           this.cdr.detectChanges();
-          const valuesForShare: ValoresCotizacion = Datas;
-          const detalleConsultaCreidto: detalleCotizacion={
-            valores:valuesForShare,
-            valorCredito:this.valorCredito,
-            cantidadCuotas:this.numeroDeCuotas,
-            frecuenciaCobro:this.frecuenciaString
-          }
+          if(this.divisaSeleccionada){
+            const valuesForShare: ValoresCotizacion = Datas;
+            const detalleConsultaCreidto: detalleCotizacion={
+              valores:valuesForShare,
+              valorCredito:this.valorCredito,
+              cantidadCuotas:this.numeroDeCuotas,
+              frecuenciaCobro:this.frecuenciaString,
+              simbolo:this.divisaSeleccionada.symbolo,
+              idMoney:this.divisaSeleccionada.idMoneda,
+              idUser:Number(localStorage.getItem('id'))
+            }
           this.servicioCompartidoValues.guardarCotizacion(detalleConsultaCreidto)
           this.cdr.detectChanges();
           this.router.navigate(['/cotizar/resultado'])
+          }          
         },
         error: (error) => {
           console.error(error);
         }
       }
     )
+    }  
   } 
 }

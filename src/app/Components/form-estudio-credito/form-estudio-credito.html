@@ -6,7 +6,7 @@
             <select [(ngModel)]="divisaSeleccionada"
             name="DivisasDb">
                 <option value="" disabled selected>Seleccione una valor pais-moneda</option>
-                <option *ngFor="let divisa of divisas" [ngValue]="divisa.idMoneda">
+                <option *ngFor="let divisa of divisas" [ngValue]="divisa">
                     {{divisa.pais}}-{{divisa.nombre}}
                 </option>
             </select>

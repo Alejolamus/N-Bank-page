@@ -34,14 +34,11 @@ export class FormLogin {
   this.LoginServicios.loginAndToken(datosIngreso)
     .subscribe({
       next: (respuesta) => {
-        console.log('ingreso a next');
-        console.log("resultado Login", respuesta);
         localStorage.setItem("token", respuesta);
         this.decodificarToken.decodificarToken();
         this.router.navigate(['/']);
       },
       error: (error) => {
-        console.log('intrese al error');
         switch (error.status) {
           case 401:
             this.mensajeError = "Contraseña incorrecta";
@@ -55,7 +52,6 @@ export class FormLogin {
             this.mensajeError = "Error inesperado. Intente de nuevo.";
         }
         this.cdr.detectChanges();
-        console.log(this.mensajeError);
       }
     });
   }

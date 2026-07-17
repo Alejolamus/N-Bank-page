@@ -6,11 +6,18 @@
             <p>Primer Pago</p>
             <p>{{cotizacion.valores.fechaPrimerPago}}</p>
             <p>Valor Cuota</p>
-            <p>{{cotizacion.valores.valorCuota}}</p>
+            <p>{{cotizacion.simbolo}} {{cotizacion.valores.valorCuota}}</p>
             <p>Valor solicitado</p>
-            <p>{{cotizacion.valorCredito}}</p>
+            <p>{{cotizacion.simbolo}} {{cotizacion.valorCredito}}</p>
             <p>Cantidad de cuotas</p>
-            <p>{{cotizacion.cantidadCuotas}}</p>    
+            <p>{{cotizacion.cantidadCuotas}}</p> 
+            @if(this.cotizacion.valores.valueRiesgo){
+                <button routerLink="/">rechazar credito</button> 
+                <br> 
+                <button type="button" (click)="CrearCreditoDb()">aceptar credito</button>
+            }@else{
+                <button routerLink="/">Regresar al inicio</button>
+            }          
         }
     </div>
 </div>

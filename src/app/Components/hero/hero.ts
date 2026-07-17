@@ -12,11 +12,9 @@ export class Hero {
   linkSimulacion: string ='/login';
   ngOnInit():void{
   const token = localStorage.getItem('token');
-  console.log(this.linkSimulacion);
   if (token){
     this.linkSimulacion='/cotizar'
     this.cdr.detectChanges()
-
   }
   }
 }

@@ -40,16 +40,12 @@ export class FormRegistro {
       .subscribe({
 
         next: (data) => {
-          console.log(data);
           this.ubicaciones = data;
-
           this.departamentos = data.map(x => x.name);
         },
 
         error: (error) => {
-
           console.error(error);
-
         }
       });
     }

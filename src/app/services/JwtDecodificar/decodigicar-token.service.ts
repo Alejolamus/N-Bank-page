@@ -6,14 +6,17 @@ import { JwtClaims } from '../../models/jwt/JwtClaims';
   providedIn: 'root',
 })
 export class DecodigicarTokenService {
-  decodificarToken(){
+  decodificarToken() {
     const token = localStorage.getItem("token");
-    if (token!=null){
-      const claims=jwtDecode<JwtClaims>(token);
+
+    if (token) {
+      const claims: JwtClaims = jwtDecode<any>(token);
       localStorage.setItem("user_name", claims.name);
-      localStorage.setItem("id",claims.id);
-      localStorage.setItem("rol_user",
-                            claims["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]);
+      localStorage.setItem("id", claims.id);
+      localStorage.setItem(
+        "rol_user",
+        claims["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
+      );
     }
   }
 }
