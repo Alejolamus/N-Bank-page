@@ -7,6 +7,7 @@ import { ValoresCotizacion } from '../../models/CotizarCredito/valuesCotizacion'
 @Injectable({
   providedIn: 'root',
 })
+//Consume el api para cotizar credito y guarda los datos en un objeto valoresCotizacion
 export class CotizarValores {
   private apiUrl = 'https://localhost:44343/api/Cotizar';
 

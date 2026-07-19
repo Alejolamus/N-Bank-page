@@ -7,7 +7,7 @@ import { DataLogin } from '../../models/dataLogin';
   providedIn: 'root',
 })
 export class LoginServices {
-
+  //Consume el api para valdiar ingreso y recibe el token
   private apiUrl = 'https://localhost:44343/api/LoginClient/Login';
 
   constructor(private http: HttpClient) { }

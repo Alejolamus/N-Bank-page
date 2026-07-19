@@ -51,6 +51,7 @@ export class FormEstudioCredito {
       //registar endpoint y crear apgina que reciba los valores e imprima//
   }
   frecuenciaString: string='';
+  //consutamos cotizacion y si el credito puede ser aprovado
   CotizarCreditoYauht(){
     this.cdr.detectChanges();
     if (this.divisaSeleccionada){

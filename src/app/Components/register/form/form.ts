@@ -35,6 +35,7 @@ export class FormRegistro {
   terminosYcondiciones: boolean=false;
   //msn//
   mensajeStatus: string='';
+  //consume el servicio para rellenar el selector de deparatamentos
   ngOnInit(): void {
     this.ubicacionesService.obtenerUbicaciones()
       .subscribe({
@@ -49,15 +50,15 @@ export class FormRegistro {
         }
       });
     }
+  //llena los municipios en funcion del departamento
   municipiosService(departamet: string)
   {
     const arregloMunicios = this.ubicaciones.find(x=>x.name===departamet);
     if (arregloMunicios){
       this.municipios= arregloMunicios.municipios;
     }else{this.municipios=[]}   
-    console.log(this.municipios);
   }
-  
+  //consume servicio para genera cliente
   CrearNuevoCliente(){
   
   let tipoDocumentoEnum: number = 0;

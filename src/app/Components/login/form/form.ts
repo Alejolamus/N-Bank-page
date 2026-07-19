@@ -22,6 +22,7 @@ export class FormLogin {
   correoUsuario: string='';
   passUsuario: string='';
   mensajeError: string='';
+  //login consume servicio que conecta al controlador, decifra el token en caso de EXITO
   login() {
 
   this.mensajeError = "";

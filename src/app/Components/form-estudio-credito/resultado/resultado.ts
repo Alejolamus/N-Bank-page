@@ -11,6 +11,7 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './resultado.html',
   styleUrl: './resultado.css',
 })
+//se usa cdr ya que la app no esta detectando cambio de forma automantica durante el renderizado
 export class ResultadoCotizacionValues {
   textAprovacion: string = '';
   numEnumFrecuencia=4;
@@ -20,6 +21,7 @@ export class ResultadoCotizacionValues {
               private crearCredito: CrearCredito,
               private router: Router
   ){}
+  //metodo que inicia al renerar el componente toma los valores desde el servicio compatido
   ngOnInit(){
     this.cotizacionState.cotizacion$.subscribe(data =>{
       if (data) {
@@ -33,6 +35,7 @@ export class ResultadoCotizacionValues {
       }
     });
   }
+  //registra credito consumiendo el servicio que conecta con el controlador
   CrearCreditoDb(){
     if (this.cotizacion){
       switch (this.cotizacion.frecuenciaCobro){

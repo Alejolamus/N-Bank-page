@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
 export class Hero {
   constructor(private cdr: ChangeDetectorRef){}
   linkSimulacion: string ='/login';
+  //determinamos link del boton para que el usario ingrese antes de cotizar
   ngOnInit():void{
   const token = localStorage.getItem('token');
   if (token){

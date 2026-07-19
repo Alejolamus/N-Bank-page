@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+//consume el api para generar un arreglo de datos de divisas para formularios
 export class CurrencyData {
   private apiUrl = 'https://localhost:44343/api/currencysDataForm';
 

@@ -7,9 +7,8 @@ import { UbicacionCol } from '../models/ubicaciones-col';
   providedIn: 'root'
 })
 export class UbicacionesColService {
-
+  //consume la api y necera un arreglo con la interfas ubicaciones
   private apiUrl = 'https://localhost:44343/api/DtosMunicipios';
-
   constructor(private http: HttpClient) { }
 
   obtenerUbicaciones(): Observable<UbicacionCol[]> {

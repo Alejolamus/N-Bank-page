@@ -6,6 +6,7 @@ import { newCredataData } from '../../models/Creditos/newCredit';
 @Injectable({
   providedIn: 'root',
 })
+//Crea credito solo recibe msn de estado para la peticion
 export class CrearCredito {
   private apiUrl = 'https://localhost:44343/api/CreditRegister';
 

@@ -6,6 +6,7 @@ import { JwtClaims } from '../../models/jwt/JwtClaims';
   providedIn: 'root',
 })
 export class DecodigicarTokenService {
+  //decifra el token y guarda los claims no genericos en el localStorage
   decodificarToken() {
     const token = localStorage.getItem("token");
 
